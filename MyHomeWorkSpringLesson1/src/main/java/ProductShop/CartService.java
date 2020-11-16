@@ -8,6 +8,7 @@ import java.util.List;
 @Component
 public class CartService {
 
+
     private List<Product> shopBasket = new ArrayList<Product>();
 
     public int totalCost() {

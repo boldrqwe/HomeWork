@@ -6,6 +6,7 @@ import java.util.List;
 
 @Component
 public class ProductService {
+    
     private ProductRepository productRepository;
 
     public ProductService(ProductRepository productRepository) {
