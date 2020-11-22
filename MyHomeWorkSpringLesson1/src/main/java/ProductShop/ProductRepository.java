@@ -12,9 +12,7 @@ public class ProductRepository {
 
 
 
-    public ProductRepository() {
 
-    }
     @PostConstruct
     public void init(){
         addProduct(new Product(1,"apple",50));

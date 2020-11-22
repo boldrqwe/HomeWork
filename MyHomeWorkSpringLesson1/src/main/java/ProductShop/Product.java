@@ -3,6 +3,7 @@ package ProductShop;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
+import java.util.Objects;
 
 public class Product {
     int id;
@@ -27,5 +28,19 @@ public class Product {
         return price;
     }
 
+    @Override
+    public boolean equals(Object o) {
 
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return getId() == product.getId() &&
+                getPrice() == product.getPrice() &&
+                Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), name, getPrice());
+    }
 }
