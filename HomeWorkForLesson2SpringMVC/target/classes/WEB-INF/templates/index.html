@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Главная</title>
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+<body>
+<h1>Магазин продуктов</h1>
+<h2>Сегодня в наличии:</h2>
+<!--/*@thymesVar id="products" type="java.util.List<com.spring.homework.model.Product>"*/-->
+<tr th:each="product : ${products}">
+    <div class="productsText">
+<td class="text" th:text="${product.id}"></td>
+<td th:text="${product.title}"></td>
+<td th:text="${product.description}"></td>
+<td th:text="${product.brand}"></td>
+<td th:text="${product.price}"></td>
+
+    </div>
+</tr>
+    <a th:href="@{/products}">Перейти в магазин</a>
+</body>
+</html>

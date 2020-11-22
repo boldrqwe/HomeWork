@@ -1,0 +1,10 @@
+.productsText{
+    height: 200px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    font-family: Consolas;
+}
+.text{
+    font-size: 20px;
+}

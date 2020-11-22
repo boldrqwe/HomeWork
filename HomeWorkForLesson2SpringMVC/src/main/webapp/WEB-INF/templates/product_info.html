@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Описание продукта</title>
+</head>
+
+<body>
+<h1>Описание продукта</h1>
+<!--/*@thymesVar id="product" type="com.spring.homework.model.Product"*/-->
+
+id:    <td th:text="${product.id}"></td> <br>
+Название:    <td th:text="${product.title}"></td><br>
+Описание:    <td th:text="${product.description}"></td><br>
+Бренд:    <td th:text="${product.brand}"></td><br>
+Цена:    <td th:text="${product.price}"></td>
+<br>
+<a th:href="@{/app}">на Главную страницу</a>
+<a th:href="@{/products}">Перейти в магазин</a>
+</body>
+</html>
