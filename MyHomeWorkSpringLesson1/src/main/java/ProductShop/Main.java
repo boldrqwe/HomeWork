@@ -1,7 +1,9 @@
 package ProductShop;
 
+import org.omg.CORBA.Object;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -24,7 +26,7 @@ public class Main {
                 case 1:
                     System.out.println("Чтобы добавить товар в корзину выберите id товара");
                     Product p = productService.intoBasket(scanner.nextInt());
-                    if (p != null) {
+                    if (!Objects.equals(p,null)) {
                         cartService.add(p);
                         System.out.println("вы положили в корзину"+ p.toString());
                     } else {
@@ -39,7 +41,7 @@ public class Main {
                     System.out.println("введите id товара");
 
                     Product product = cartService.remove(scanner.nextInt());
-                    if (product != null) {
+                    if (!Objects.equals(product,null)) {
                         System.out.println("из корзины убрали: \n" + product.toString());
                         productService.addProduct(product);
                     } else {

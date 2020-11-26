@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Изменить данные продукта</title>
+</head>
+
+<body>
+    <h1>Изменить данные продукта</h1>
+    <!--/*@thymesVar id="product" type="com.spring.homework.model.Product"*/-->
+    <form th:action="@{/product/edit}" th:object="${product}" method="POST">
+        <input hidden th:field="*{id}"/>
+        <br>
+        Title: <input th:field="*{title}"/>
+        <br>
+        Description: <input th:field="*{description}"/>
+        <br>
+        Brand: <input th:field="*{brand}"/>
+        Price: <input th:field="*{price}"/>
+        <br>
+        <input type="submit" value="Submit" />
+    </form>
+    <br>
+    <a th:href="@{/app}">на Главную страницу</a>
+</body>
+</html>
