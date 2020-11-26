@@ -1,6 +1,6 @@
 package com.spring.homework.Controllers;
 
-import com.spring.homework.Service.ProductService;
+import com.spring.homework.service.ProductService;
 import com.spring.homework.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;

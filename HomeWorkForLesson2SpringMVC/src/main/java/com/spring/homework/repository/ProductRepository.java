@@ -1,9 +1,14 @@
 package com.spring.homework.repository;
 
+import com.spring.homework.entity.ProductData;
 import com.spring.homework.model.Product;
+import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,11 +17,20 @@ import java.util.List;
 public class ProductRepository {
     private List<Product> products;
 
+    EntityManagerFactory factory;
+
+
     @PostConstruct
     public void init() {
+        factory  = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        EntityManager em = factory.createEntityManager();
+        String queryString = "SELECT p FROM ProductData p";
+        TypedQuery<ProductData> typedQuery = em.createQuery(queryString, ProductData.class);
+        List<ProductData> productData = typedQuery.getResultList();
         this.products = new ArrayList<>();
-        this.products.add(new Product(1L, "apple", "green apple, tasty", "AppleHouse", 10));
-        this.products.add(new Product(2L, "orange", " orange, tasty", "OrangeHouse", 12));
+        for (int i = 0; i <productData.size(); i++) {
+            products.add(new Product(productData.get(i)));
+        }
     }
 
     public List<Product> findAll() {
