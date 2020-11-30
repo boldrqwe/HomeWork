@@ -11,13 +11,15 @@ public class Product {
     private String brand;
     private double price;
 
-    public Product(ProductData productData) {
-        this.id = productData.getId();
-        this.title = productData.getTitle();
-        this.description = productData.getDescription();
-        this.brand = productData.getBrand();
-        this.price = productData.getPrice();
+    public Product(Long id, String title, String description, String brand, double price) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.brand = brand;
+        this.price = price;
     }
+
+
 
     public Long getId() {
         return id;
