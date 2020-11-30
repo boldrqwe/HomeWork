@@ -10,7 +10,7 @@
 <body>
     <h1>Изменить данные продукта</h1>
     <!--/*@thymesVar id="product" type="com.spring.homework.model.Product"*/-->
-    <form th:action="@{/product/edit}" th:object="${product}" method="POST">
+    <form th:action="@{/products/edit}" th:object="${product}" method="POST">
         <input hidden th:field="*{id}"/>
         <br>
         Title: <input th:field="*{title}"/>

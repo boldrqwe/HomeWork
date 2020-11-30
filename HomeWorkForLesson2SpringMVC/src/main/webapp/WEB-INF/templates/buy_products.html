@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Магазин продуктов</title>
+</head>
+
+<body>
+    <h1>Список продуктов которые можно купить:</h1>
+    <table>
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>title</td>
+            <td>description</td>
+            <td>brand</td>
+            <td>price</td>
+        </tr>
+        </thead>
+        <tbody>
+        <!--/*@thymesVar id="products" type="java.util.List<com.spring.homework.model.Product>"*/-->
+        <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.title}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.brand}"></td>
+                <td th:text="${product.price}"></td>
+                <td><a th:href="@{'/products/put/' + ${product.id}}" >положить в корзину</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/app}">на Главную страницу</a>
+    <td><a th:href="@{'/products/product/'}">в корзину</a></td>
+</body>
+</html>

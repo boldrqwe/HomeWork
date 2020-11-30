@@ -43,21 +43,21 @@ public class ProductRepository {
     }
 
     public Product saveOrUpdate(Product product) {
+        Factory factory = new Factory();
         if (product.getId() == null) {
-            Factory factory = new Factory();
-            factory.save(product);
+            factory.saveProduct(product);
             this.init();
             return product;
         } else {
             for (int i = 0; i < products.size(); i++) {
                 if (products.get(i).getId().equals(product.getId())) {
-                    products.set(i, product);
-
+                    factory.updateProduct(product);
+                    this.init();
                     return product;
                 }
             }
         }
-        throw new RuntimeException("Error save or update customer");
+        throw new RuntimeException("Error save or update product");
     }
 
     public Product findByID(Long id) {
