@@ -17,7 +17,7 @@ public class Product {
     private String name;
 
     @Column(name = "quantity")
-    private Long quaitity;
+    private Long quantity;
 
     @Column(name = "price")
     private Double price;
@@ -26,16 +26,27 @@ public class Product {
     @OptimisticLock(excluded = true)
     private String something;
 
+    @ManyToOne
+    @JoinColumn(name ="category_id")
+    private Category category;
+
     @Version
     long version;
 
-    public Product(){
-
+    public Product() {
     }
 
-    public Product(String name, Long quaitity, Double price) {
+    public Product(String name, Long quantity, Double price) {
         this.name = name;
-        this.quaitity = quaitity;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -55,22 +66,6 @@ public class Product {
         this.name = name;
     }
 
-    public Long getQuaitity() {
-        return quaitity;
-    }
-
-    public void setQuaitity(Long quaitity) {
-        this.quaitity = quaitity;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     public String getSomething() {
         return something;
     }
@@ -79,12 +74,24 @@ public class Product {
         this.something = something;
     }
 
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
+
     public long getVersion() {
         return version;
     }
 
-    public void setVersion(long version) {
-        this.version = version;
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
@@ -92,8 +99,7 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", quaitity=" + quaitity +
-                ", price=" + price +
+                ", price='" + price + '\'' +
                 ", something='" + something + '\'' +
                 ", version=" + version +
                 '}';

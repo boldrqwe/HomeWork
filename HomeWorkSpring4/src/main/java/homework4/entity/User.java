@@ -5,12 +5,9 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,19 +15,18 @@ public class User {
     private Long id;
 
     @Column(name = "name")
-    private  String name;
+    private String name;
 
     @OneToMany(
-            mappedBy = "user", fetch = FetchType.EAGER
+            mappedBy = "user",
+            fetch = FetchType.EAGER
     )
-    Set<Article> articleSet = new HashSet<Article>();
-
+    Set<Article> articleSet = new HashSet<>();
 
     @OneToOne(mappedBy = "user")
     private Cart cart;
 
-    public User(){
-
+    public User() {
     }
 
     public User(String name) {
@@ -72,26 +68,23 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return getId().equals(user.getId()) &&
-                getName().equals(user.getName()) &&
-                getArticleSet().equals(user.getArticleSet()) &&
-                getCart().equals(user.getCart());
+        if (o == null || getClass() != o.getClass()) return false;
+       User user = (User) o;
+        return id.equals(user.id) &&
+                name.equals(user.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getArticleSet(), getCart());
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "User {" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", articleSet=" + articleSet +
-                ", cart=" + cart +
                 '}';
     }
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cartentries")
+@Table(name = "cartenries")
 public class CartEntry {
 
     @Id
@@ -19,7 +19,7 @@ public class CartEntry {
     private Integer quantity;
 
     @OneToOne
-    @JoinColumn(name = "prduct_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
@@ -69,18 +69,14 @@ public class CartEntry {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CartEntry)) return false;
-        CartEntry cartEntry = (CartEntry) o;
-        return getId().equals(cartEntry.getId()) &&
-                getPrice().equals(cartEntry.getPrice()) &&
-                getQuantity().equals(cartEntry.getQuantity()) &&
-                getProduct().equals(cartEntry.getProduct()) &&
-                getCart().equals(cartEntry.getCart());
+        if (o == null || getClass() != o.getClass()) return false;
+       CartEntry cartEntry = (CartEntry) o;
+        return id.equals(cartEntry.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getPrice(), getQuantity(), getProduct(), getCart());
+        return Objects.hash(id);
     }
 
     @Override
@@ -90,7 +86,6 @@ public class CartEntry {
                 ", price=" + price +
                 ", quantity=" + quantity +
                 ", product=" + product +
-                ", cart=" + cart +
                 '}';
     }
 }

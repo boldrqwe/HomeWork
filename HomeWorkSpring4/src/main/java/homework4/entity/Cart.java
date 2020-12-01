@@ -1,13 +1,14 @@
 package homework4.entity;
 
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "carts")
 public class Cart {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,7 @@ public class Cart {
             mappedBy = "cart",
             fetch = FetchType.EAGER
     )
-    List<CartEntry> cartEntryList = new ArrayList<CartEntry>();
+    List<CartEntry> cartEntryList = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "user_id")
@@ -62,17 +63,15 @@ public class Cart {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Cart)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return getId().equals(cart.getId()) &&
-                getCode().equals(cart.getCode()) &&
-                getCartEntryList().equals(cart.getCartEntryList()) &&
-                getUser().equals(cart.getUser());
+        return id.equals(cart.id) &&
+                code.equals(cart.code);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCode(), getCartEntryList(), getUser());
+        return Objects.hash(id, code);
     }
 
     @Override

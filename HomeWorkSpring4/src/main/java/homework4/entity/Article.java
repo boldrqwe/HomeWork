@@ -1,9 +1,6 @@
 package homework4.entity;
 
-
-
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "articles")
@@ -17,12 +14,11 @@ public class Article {
     @Column(name = "title")
     private String title;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Article(){
-
+    public Article() {
     }
 
     public Article(String title, User user) {
@@ -59,7 +55,8 @@ public class Article {
         return "Article{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", user=" + user +
-                '}';
+                ", user={id='" + user.getId() + '\'' +
+                ", title='" + user.getName() + '\'' +
+                "}}";
     }
 }

@@ -1,6 +1,6 @@
 package homework4.data;
 
 public interface ArticleData {
-    Long getID();
+    Long getId();
     String getTitle();
 }
